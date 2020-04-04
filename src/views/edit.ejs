@@ -1,0 +1,118 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <section class="masthead bg-primary text-white text-center" id="actualizar">
+          <div class="container d-flex align-items-center flex-column">
+          <form name="actualizarSolicitud" id="actualizarSolicitud" action="/edit/<%= task._id %>" method="POST">
+            <h1 align="center">Editar Solicitud</h1>
+            <div class="row">
+              <div class="col text-center">
+                <label for="nombre">Nombre</label>
+                <input value="<%= task.nombre %>" type="text" class="form-control" id="nombre" name="nombre" required="true">
+              </div>
+              <div class="col text-center">
+                <label for="apellidoPaterno">Apellido Paterno</label>
+                <input value="<%= task.apellidoPaterno %>" type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno" required="true">
+              </div>
+              <div class="col text-center">
+                <label for="apellidoMaterno">Apellido Materno</label>
+                <input value="<%= task.apellidoMaterno %>" type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno" required="true">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <label for="email">Email</label>
+                <input value="<%= task.email %>" type="email" class="form-control" id="email" name="email" required="true">
+                <label for="fechas">Fechas</label>
+                <table class="responsive" id="fechas">
+                  <tr>
+                    <td>
+                      <label for="fechainicio">Inicio</label>
+                      <input value="<%= task.Solicitud.fechaInicio %>" type="date" class="form-control" id="fechaInicio" name="Solicitud.fechaInicio" required="true">
+                    </td>
+                    <td>
+                      <label for="fechaFinal">Termino</label>
+                      <input value="<%= task.Solicitud.fechaFinal %>" type="date" class="form-control" id="fechaFinal" name="Solicitud.fechaFinal" required="true">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="estado">Estado de la solicitud</label>
+                    <select class="form-control" name="Solicitud.estado" id="estado">
+                      <option value="<%= task.Solicitud.estado %>"><%= task.Solicitud.estado %></option>
+                      <option value="Rechazada">Rechazada</option>
+                      <option value="Pendiente">Pendiente</option>
+                      <option value="Aprobada">Aprobada</option>
+                    </select>
+                    </td>
+                  </tr>
+                </table>
+                
+              </div>
+              <div class="col text-center">
+                <label>Telefonos</label>
+                <input value="<%= task.telefono.movil %>" type="number" class="form-control" placeholder="Móvil" id="movil" name="telefono.movil" required="true"><br>
+                <input value="<%= task.telefono.fijo %>" type="number" class="form-control" placeholder="Fijo" id="fijo" name="telefono.fijo"><br>
+                <input value="<%= task.telefono.otro %>" type="number" class="form-control" placeholder="Otro" id="otro" name="telefono.otro">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <label for="puesto">Puesto</label>
+                  <select class="form-control" id="puesto" name="puesto" required="true">
+                    <option value= "<%= task.puesto %>"><%= task.puesto %></option>
+                      <option value= "Cab" >Cab</option>
+                      <option value= "Des" >Des</option>
+                </select>
+              </div>
+              <div class="col text-center">
+                <label for="rango">Rango</label>
+                  <select class="form-control" id="rango" name="rango" required="true">
+                    <option value= "<%= task.rango %>"><%= task.rango %></option>
+                      <option value= "Primer oficial" >Primer oficial</option>
+                      <option value= "Capitan" >Capitan</option>
+                      <option value= "Segundo oficial" >Segundo oficial</option>
+                      <option value= "Azafata Master" >Azafata Master</option>
+                      <option value= "Azafata keven" >Azafata keven</option>
+                </select>
+              </div>
+            </div><br>
+            
+            <br>
+            <div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+              </div>
+            </div>
+          </form> <br><br>
+          </div>
+        </section>
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!--script para javascript para que carga el modal <meta http-equiv="refresh" content="1; url=/">  <meta http-equiv="refresh" content="; url=/">-->
+<script>
+       
+   $(document).ready(function()
+   {
+      $("#Modal").modal("show");
+      $("#Modal").on('hidden.bs.modal', function () {
+        //<meta http-equiv="refresh" content="; url=/">
+        document.write('<meta http-equiv="refresh" content="; url=/nad">');
+    });
+   });
+</script>
+
